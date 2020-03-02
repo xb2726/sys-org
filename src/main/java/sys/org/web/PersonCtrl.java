@@ -36,6 +36,7 @@ public class PersonCtrl {
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String toAdd(HttpServletRequest request, HttpServletResponse response) throws IOException {
         return "person_edit";
+        /*dsf*/
     }
     @RequestMapping(value = "/modify", params = "id", method = RequestMethod.GET)
     public String toModify(Integer id, HttpServletRequest request, HttpServletResponse response) throws IOException {
