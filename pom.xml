@@ -19,7 +19,7 @@
         <jdbc.url>jdbc:mysql://localhost:3306</jdbc.url>
         <jdbc.username>root</jdbc.username>
         <jdbc.password>root</jdbc.password>
-        <spring.version>4.2.6.RELEASE</spring.version>
+        <spring.version>5.2.4.RELEASE</spring.version>
     </properties>
     <dependencies>
         <dependency>
