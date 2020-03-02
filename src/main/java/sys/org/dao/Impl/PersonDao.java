@@ -11,4 +11,5 @@ import sys.org.util.dao.BaseDao;
  */
 @Repository("personDao")
 public class PersonDao extends BaseDao<Person> implements IPersonDao {
+    /*00000000000*/
 }
