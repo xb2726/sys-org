@@ -43,7 +43,7 @@ public class PersonPosiServiceImpl implements PersonPosiService {
 
     @Override
     public Pager<PersonPosi> pageQuery(PersonPosiBo bo) {
-        Pager<PersonPosi> pager = new Pager<>();
+        Pager<PersonPosi> pager = new Pager<PersonPosi>();
         Long total = personPosiDao.getTotal(bo);
         pager.setTotal(total);
         if (total == null || total == 0) {

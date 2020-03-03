@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(name = "sys_person")
 public class Person {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(length = 20,nullable = false)
     private String name;
@@ -25,7 +25,6 @@ public class Person {
     private Integer orgId;
     @Column(length = 64)
     private String orgName;
-
     public int getId() {
         return id;
     }
@@ -63,5 +62,16 @@ public class Person {
 
     public void setOrgName(String orgName) {
         this.orgName = orgName;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", orgId=" + orgId +
+                ", orgName='" + orgName + '\'' +
+                '}';
     }
 }

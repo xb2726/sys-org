@@ -5,10 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import sys.org.bo.PersonBo;
-import sys.org.model.Org;
 import sys.org.model.Person;
 import sys.org.service.PersonService;
 import sys.org.util.GsonUtils;
+
+import sys.org.util.model.Pager;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -27,23 +28,28 @@ public class PersonCtrl {
 
     @RequestMapping(value = "/query", method = RequestMethod.POST)
     @ResponseBody
+    //查询
     public void queryPerson(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PersonBo bo = GsonUtils.wrapFromRequest(request, PersonBo.class);
-        List<Person> personList = personService.query(bo);
+        Pager<Person> personList = personService.pageQuery(bo);
         GsonUtils.printData(response, personList);
     }
 
+    //增加
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String toAdd(HttpServletRequest request, HttpServletResponse response) throws IOException {
         return "person_edit";
         /*dsf*/
     }
+
+    //修改
     @RequestMapping(value = "/modify", params = "id", method = RequestMethod.GET)
     public String toModify(Integer id, HttpServletRequest request, HttpServletResponse response) throws IOException {
         Person person = personService.findById(id);
         request.setAttribute("person", person);
         return "person_edit";
     }
+
     // 根据用户ID查询用户
     @RequestMapping(value = "/find", params = "id", method = RequestMethod.GET)
     @ResponseBody
@@ -76,6 +82,17 @@ public class PersonCtrl {
     public void deleteById(int id, HttpServletRequest request, HttpServletResponse response) throws IOException {
         personService.deleteById(id);
         GsonUtils.printData(response, true);
+    }
+
+    //多表关联查询
+    @RequestMapping(value = "/person_list_m", method = RequestMethod.POST)
+    @ResponseBody
+    public void personList(HttpServletRequest request, HttpServletResponse response) {
+        List list = personService.personList();
+        Object[] objects = list.toArray();
+        GsonUtils.printData(response, objects);
+
+
     }
 
 }

@@ -45,10 +45,11 @@
 
                 </tbody>
             </table>
+            <jsp:include page="/app/page.jsp"/>
         </div>
     </div>
 </div>
 <script src="<%=contextPath%>/app/common.js"></script>
-<script src="<%=contextPath%>/app/person/person_list.js"></script>
+<script src="<%=contextPath%>/app/person/person_list.js?v=1"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@ import java.io.IOException;
  * @author 27267
  */
 public class GsonUtils {
-    //写数据
+    //写数据库数据到前端
     public static void printData(HttpServletResponse response, Object data) {
         Gson gson = new Gson();
         String jsonData = gson.toJson(data);
@@ -23,7 +23,7 @@ public class GsonUtils {
             e.printStackTrace();
         }
     }
-//读数据
+//读前端传过来的数据
     public static <T> T wrapFromRequest(HttpServletRequest request, Class<T> clazz) {
         try {
             String json = IOUtils.toString(request.getInputStream(), "utf-8");

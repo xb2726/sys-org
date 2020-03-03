@@ -1,6 +1,5 @@
 package sys.org.model;
 
-import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
 
@@ -13,7 +12,7 @@ import javax.persistence.*;
 public class Org {
     //组织机构id
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(length = 64,nullable = false)
     private String name;

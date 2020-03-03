@@ -42,5 +42,5 @@ public interface PersonService {
     Pager<Person> pageQuery(PersonBo bo);
 
     void deleteById(int id);
-
+     List personList();
 }

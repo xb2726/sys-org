@@ -6,10 +6,14 @@ function loadPerson() {
         name: $('#name').val() || null
     };
 
-    jsonPost('/person/query', condition, function (o) {
+    // 当前页=start/limit
+    // 当前查询索引start
+    // 每次查询多少条（页面上要展示的数量）limit
+    jsonPost(getPageUrl('/person/query'), condition, function (o) {
         // 往table写入数据
         $('.table>tbody>tr').remove();
-        $.each(o, function (index, person) {
+        setPage(o.total);
+        $.each(o.datas, function (index, person) {
             $('.table>tbody').append('<tr>' +
                 '<td>' + (index + 1) + '</td>' +
                 '<td>' + person.name + '</td>' +
@@ -61,4 +65,5 @@ $(function () {
     $('#btn_add').click(function () {
         window.open('/person/add');
     })
+
 });

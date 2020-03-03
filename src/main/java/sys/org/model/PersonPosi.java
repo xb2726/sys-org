@@ -1,9 +1,6 @@
 package sys.org.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author 27267
@@ -12,7 +9,7 @@ import javax.persistence.Table;
 @Table(name = "sys_personposi")
 public class PersonPosi {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Integer perId;
     private Integer posId;
@@ -35,6 +32,15 @@ public class PersonPosi {
 
     public Integer getPosId() {
         return posId;
+    }
+
+    @Override
+    public String toString() {
+        return "PersonPosi{" +
+                "id=" + id +
+                ", perId=" + perId +
+                ", posId=" + posId +
+                '}';
     }
 
     public void setPosId(Integer posId) {

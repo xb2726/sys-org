@@ -46,7 +46,7 @@ public class OrgServiceImpl implements OrgService {
 
     @Override
     public Pager<Org> pageQuery(OrgBo bo) {
-        Pager<Org> pager = new Pager<>();
+        Pager<Org> pager = new Pager<Org>();
         Long total = iOrgDao.getTotal(bo);
         pager.setTotal(total);
         if (total == null || total == 0) {

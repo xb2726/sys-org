@@ -1,9 +1,6 @@
 package sys.org.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author 27267
@@ -13,7 +10,7 @@ import javax.persistence.Table;
 @Table(name = "position")
 public class Position {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     //岗位的名称
     private String name;
@@ -52,5 +49,15 @@ public class Position {
 
     public void setManager(int manager) {
         this.manager = manager;
+    }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sn='" + sn + '\'' +
+                ", manager=" + manager +
+                '}';
     }
 }
